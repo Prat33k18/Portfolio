@@ -59,29 +59,35 @@ for (let i = 0; i < navigationLinks.length; i++) {
   });
 }
 
-(function() {
-      emailjs.init("ZmzDHQRISr2393Tm1");  
-  })();
+document.addEventListener('DOMContentLoaded', function() {
+    emailjs.init("kMEmCCArSszoMwvDN"); 
 
-   document.querySelector('.form-btn').addEventListener('click', function() {
-      const form = document.getElementById('contact-form');
-      
-      // Extract the form data
-      const fullName = form.elements['fullname'].value;
-      const email = form.elements['email'].value;
-      const message = form.elements['message'].value;
+    document.querySelector('.form-btn').addEventListener('click', function(event) {
+        event.preventDefault(); 
 
-      // Send the email using EmailJS
-      emailjs.send('skill_lu5bu8b', 'template_yw57btq', {
-          from_name: fullName,
-          from_email: email,
-          message: message
-      })
-      .then(function(response) {
-         alert('Message sent successfully!');
-      }, function(error) {
-         alert('Failed to send message, please try again later.');
-      });
-   });
+        const form = document.querySelector('form[data-form]');
+        if (!form) {
+            console.error('Form with data-form attribute not found.');
+            return;
+        }
+
+        const fullName = form.elements['fullname'].value;
+        const email = form.elements['email'].value;
+        const message = form.elements['message'].value;
+
+        emailjs.send('service_vghf9xr', 'template_1xq19vm', {
+            from_name: fullName,
+            from_email: email,
+            message: message
+        })
+        .then(function(response) {
+            alert('Message sent successfully!');
+        }, function(error) {
+            console.error('Email sending failed:', error);
+            alert('Failed to send message, please try again later.');
+        });
+    });
+});
+
 
 
