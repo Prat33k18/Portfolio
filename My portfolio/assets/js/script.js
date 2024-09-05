@@ -1,12 +1,6 @@
 'use strict';
 
-
-
-
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-
-
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
@@ -20,8 +14,6 @@ const formBtn = document.querySelector("[data-form-btn]");
 
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
-
-    // check form validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
@@ -30,9 +22,6 @@ for (let i = 0; i < formInputs.length; i++) {
 
   });
 }
-
-
-
 
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
@@ -58,10 +47,10 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    emailjs.init("kMEmCCArSszoMwvDN"); // Ensure the User ID is correct
+    emailjs.init("kMEmCCArSszoMwvDN"); 
 
     document.querySelector('.form-btn').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent form from submitting normally
+        event.preventDefault(); 
 
         const form = document.querySelector('form[data-form]');
         if (!form) {
@@ -80,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(function(response) {
             alert('Message sent successfully!');
+          form.reset();
         }, function(error) {
             console.error('Email sending failed:', error);
             alert('Failed to send message, please try again later.');
