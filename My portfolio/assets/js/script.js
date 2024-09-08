@@ -11,7 +11,10 @@ sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); }
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
-
+if (!fullName || !email || !message) {
+            alert('Please fill in all the required fields before submitting.');
+            return; 
+        }
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
     if (form.checkValidity()) {
