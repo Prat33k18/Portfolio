@@ -1,6 +1,12 @@
 'use strict';
 
+
+
+
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
+
+
+
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
@@ -14,6 +20,8 @@ const formBtn = document.querySelector("[data-form-btn]");
 
 for (let i = 0; i < formInputs.length; i++) {
   formInputs[i].addEventListener("input", function () {
+
+    // check form validation
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
@@ -22,6 +30,9 @@ for (let i = 0; i < formInputs.length; i++) {
 
   });
 }
+
+
+
 
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
@@ -61,12 +72,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const fullName = form.elements['fullname'].value;
         const email = form.elements['email'].value;
         const message = form.elements['message'].value;
-
-         if (!fullName || !email || !message) {
+        
+        if (!fullName || !email || !message) {
             alert('Please fill in all the required fields before submitting.');
             return; 
         }
-                
         emailjs.send('service_vghf9xr', 'template_1xq19vm', {
             from_name: fullName,
             from_email: email,
@@ -74,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(function(response) {
             alert('Message sent successfully!');
-          form.reset();
+            form.reset();
         }, function(error) {
             console.error('Email sending failed:', error);
             alert('Failed to send message, please try again later.');
